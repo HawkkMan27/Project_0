@@ -30,8 +30,7 @@ public class UserService implements UserServiceInterface{
 	@Override
 		public User login(Scanner scan) {
 		System.out.println("Choose an Option\n1. Login as a Customer\n2. Login as an Employee");
-		int uOption = scan.nextInt();
-		scan.nextLine();
+		int uOption = Integer.parseInt(scan.nextLine());
 		if(uOption == 1) {
 			System.out.println("Welcome Customer!\n__________\nEnter your Username: ");
 			String username = scan.nextLine();
@@ -81,8 +80,8 @@ public class UserService implements UserServiceInterface{
 					+ "\n sent $" + trans.getTransaction_amount() + " to your " + accounttobeupdated.getType() + "Account with id of " + trans.getUser_id());
 					System.out.println(" Would you like to accept the money? (y/n)");
 					String answer = scan.nextLine();
-						scan.nextInt();
-					if (answer == "y") {
+						
+					if (answer.equals("y")) {
 						boolean checkyou = aa.accountUpdate(acctobeinput, (accounttobeupdated.getBalance() + trans.getTransaction_amount()));
 						if (checkyou) {System.out.println("Your account is successfully updated");}else {System.out.println("Database update unsuccessful");}
 						List<User> allUsers = ua.getAllUsers();
@@ -109,8 +108,8 @@ public class UserService implements UserServiceInterface{
 		boolean cmRun = true;
 		while (cmRun) {
 		System.out.println("Welcome Customer!\nHow can we help? Input a number from Options below\n" 
-				+ "1.Account Options\n2. Send Money\n 3. Deposit/Withdrawal\n4. Logout to Main Menu");
-		Integer uOption = scan.nextInt();
+				+ "1. Account Options\n2. Send Money\n3. Deposit/Withdrawal\n4. Logout to Main Menu");
+		int uOption = Integer.parseInt(scan.nextLine());
 		switch (uOption) {
 		case 1:  {
 			as.accountOptions(scan, u);
@@ -118,7 +117,7 @@ public class UserService implements UserServiceInterface{
 			break;
 		}
 		case 2: {
-			ts.transfer(scan, u);
+			ts.requestTransfer(scan, u);
 			break;
 		}
 		case 3: {
@@ -127,6 +126,7 @@ public class UserService implements UserServiceInterface{
 		}
 		case 4: {
 			cmRun = false;
+			break;
 		}
 			}
 		}
@@ -139,33 +139,33 @@ public class UserService implements UserServiceInterface{
 	System.out.println("Welcome Employee " + u.getFirstName() + " " + u.getLastName());
 	while (emRun) {
 		System.out.println("Choose an Option\n1. Approve or Deny pending Accounts\n2. View Customer Accounts and Transactions\n3. Logout to Main Menu ");
-		int input = scan.nextInt();
+		int input = Integer.parseInt(scan.nextLine());
 		switch (input) {
 		
-		case 1: {
-			System.out.println("These are the new Accounts that require approval!");
-			as.approvalOfAccount(scan, u);
-			break;
+			case 1: {
+				System.out.println("These are the new Accounts that require approval!");
+				as.approvalOfAccount(scan, u);
+				break;
 		}
 		
-		case 2: {
-			System.out.println("Would you like to View Transactions?\n1. View Customer Transactions.\n2. View all Transactions.");
-			int newinput = scan.nextInt();
-			List<User> allUsers = ua.getAllUsers();
-			List<Transaction> allTransactions = tt.getAllTransactions();
-			switch(newinput) {
-			case 1:{
-				//display all customers names and id's
-				System.out.println("Here are all the Customer Transactions");
+			case 2: {
+				System.out.println("Would you like to View Transactions?\n1. View a Customer's Transactions.\n2. View all Transactions.");
+				int newinput = Integer.parseInt(scan.nextLine());
+				List<User> allUsers = ua.getAllUsers();
+				List<Transaction> allTransactions = tt.getAllTransactions();
+				switch(newinput) {
+					case 1:{
+						//display all customers names and id's
+						System.out.println("Here are all the Customer Transactions");
 				
-				for (User us: allUsers) {
-					if (us.getType().equals("Customer")) {
-						System.out.println("Customer Name: " + us.getFirstName() + " " + us.getLastName() 
+						for (User us: allUsers) {
+							if (us.getType().equals("Customer")) {
+									System.out.println("Customer Name: " + us.getFirstName() + " " + us.getLastName() 
 											+ "Customer Id: " + us.getUser_id());
-						for (Transaction at : allTransactions) {
-					if (at.getUser_id() == us.getUser_id()) {
-						System.out.println("Customer Transaction Id: " + at.getTransaction_id() + " Customer Id: " + at.getUser_id() 
-						+ "\n Type of Transaction: " + at.getTransaction_type() + " Transaction Amount: " + at.getTransaction_amount() + " at time: " + at.getDateTime());
+									for (Transaction at : allTransactions) {
+										if (at.getUser_id() == us.getUser_id()) {
+											System.out.println("Customer Transaction Id: " + at.getTransaction_id() + " Customer Id: " + at.getUser_id() 
+											+ "\n Type of Transaction: " + at.getTransaction_type() + " Transaction Amount: " + at.getTransaction_amount() + " at time: " + at.getDateTime());
 					}
 				}
 					}
@@ -174,23 +174,23 @@ public class UserService implements UserServiceInterface{
 				AppLogger.logger.info("Employee checked all customer Transactions and Accounts");
 						}
 			
-			case 2:{
-				System.out.println("Here are all the accounts and transactions! Good Luck");
-				for (User us: allUsers) {
+					case 2:{
+							System.out.println("Here are all the accounts and transactions! Good Luck");
+							for (User us: allUsers) {
 					
-						System.out.println(" User's Full Name: " + us.getFirstName() + " " + us.getLastName() 
-											+ " Id: " + us.getUser_id());
-						for (Transaction at : allTransactions) {
+								System.out.println(" User's Full Name: " + us.getFirstName() + " " + us.getLastName() 
+											+ " Id: " + us.getUser_id() + " Time");
+								for (Transaction at : allTransactions) {
 					
-						System.out.println("Transaction Id: " + at.getTransaction_id() + " User Id: " + at.getUser_id() 
-						+ "\n Type of Transaction: " + at.getTransaction_type() + " Transaction Amount: " + at.getTransaction_amount() + " at time: " + at.getDateTime());
+									System.out.println("Transaction Id: " + at.getTransaction_id() + " User Id: " + at.getUser_id() 
+									+ "\n Type of Transaction: " + at.getTransaction_type() + " Transaction Amount: " + at.getTransaction_amount() + " at time: " + at.getDateTime());
 					
 				
-					}
-				}
-				AppLogger.logger.info("Employee checked all of the Transactions and Accounts");
-				break;
-					}
+									}
+								}
+								AppLogger.logger.info("Employee checked all of the Transactions and Accounts");
+								break;
+						}
 			default: {System.out.println("Input doesn't exist. Please input an option from the table.");}
 								
 									}
@@ -198,6 +198,7 @@ public class UserService implements UserServiceInterface{
 						}
 		case 3: {
 			emRun = false;
+			break;
 		}
 		default: {System.out.println("That option doesn't exist");
 		
@@ -214,66 +215,94 @@ public class UserService implements UserServiceInterface{
 		User newUser = new User();
 		
 		System.out.println("Are you Registering as: \n1. A Customer or 2. An Employee?");
-		int regOptionOne = scan.nextInt();
-		scan.nextLine();
+		int regOptionOne = Integer.parseInt(scan.nextLine());
 			
 		switch (regOptionOne) {
-		
-		case 1: {
+		//case 1 involves registration of Customers.
+		case 1: {	newUser.setType("Customer");
+			System.out.println("Welcome Customer! Please input informaton");
+			boolean crun = true;
 			
+			boolean ucnamerun = true;
+			boolean cpwrdrun = true;
+			while (crun) {
+				while (ucnamerun) {
 			
-			newUser.setType("Customer");
-			
-				System.out.println("Input your FirstName:");
-				String firstName = scan.nextLine();
-				System.out.println("Input your Last Name:");
-				String lastName = scan.nextLine();
-				System.out.println("Input a Username:");
-				String uName = scan.nextLine();
-				System.out.println("Is this Correct? (y/n)\n" + "You inputted: "    
-						+ "Full Name: " + firstName + " " + lastName + "\nYour Username: " + uName  );
-				String yayornay = scan.nextLine();
+					System.out.println("Input your FirstName:");
+						String firstName = scan.nextLine();
+					System.out.println("Input your Last Name:");
+						String lastName = scan.nextLine();
+					System.out.println("Input a Username:");
+						String uName = scan.nextLine();
+					System.out.println("Is this Correct? (y/n)\n" + "You inputted: "    
+										+ "Full Name: " + firstName + " " + lastName + "\nYour Username: " + uName  );
+						String yayornay = scan.nextLine();
 				
 				if 	(yayornay.equals("y")) {
 					
 					newUser.setFirstName(firstName);
 					newUser.setLastName(lastName);
 					newUser.setUsername(uName);
-					ua.addUser(newUser);	}
+					ucnamerun = false;
+						} else if (yayornay.equals("n")) {
+							System.out.println("Please re-ente information");
+						} else { System.out.println("Input was neither y or n. Please Reenter information.");}
+				}
+					
+				while (cpwrdrun) {
+					System.out.println("Input a Password:");
+					String pword = scan.nextLine();
+					System.out.println("Confirm Password is correct\nRe-enter Password:");
+					String pword2 = scan.nextLine();
+				if (pword.equals(pword2)) {
+					newUser.setPassword(pword2);
+					cpwrdrun = false;
+					crun = false;
+					System.out.println("Password input Successful\n" );
+					boolean success = ua.addUser(newUser);
+					if (success) {
+						System.out.println("Congrats " + newUser.getFirstName() + " " + newUser.getLastName() + "! You've successfully registered");
+					AppLogger.logger.info("New Customer registered for a new Profile");
+					
+					}else { System.out.println("Information upload unsuccessful. Please Try again");} 
+				}else {
+					System.out.println("Passwords do not Match\nPlease try again!");
+					}
+								}
+				 }
+		break;}
 				
-				else if (yayornay.equals("n")) {	
-					
-					
-				} else { 
-			
-					System.out.println("Input was neither y or n. Please Reenter information.");			}
-			
-		
-		
-		AppLogger.logger.info("New Customer registered for a new Profile");
-		break;
-		
-		}
-		
-			case 2: {
+				
+		//Case 2 involves employee verification and registration
+		case 2: {
 				String employeeId = "employeeid";
 				
-				User ue = new User();
+				
 				
 				boolean erun = true;
-				
-				
+				boolean employeevidrun = true;
+				boolean unamerun = true;
+				boolean pwrdrun = true;
+			while (erun) {	
+			while (employeevidrun) {
+			
 				System.out.println("Please enter employee verification Id:");
 				String employeeverifyId = scan.nextLine();
-				if (employeeverifyId=="employeeid" ) {
-					
+				if (employeeverifyId.equals(employeeId)) {
+					newUser.setType("Employee");
+					System.out.println("This is correct Welcome to the System Employee");
+					employeevidrun = false;
 					//boolean pwrdrun = true;
 					//run user info loop
+				} else {
+							System.out.println("You've inputed the Employee Verification code Incorrectly!\n" 
+						+ "Please try the verification again!");	
+						
+										}
+									}	
 					
 					
-					ue.setType("Employee");
-				while (erun) {	
-					
+				while (unamerun) {	
 					System.out.println("Input your FirstName:");
 					String firstName = scan.nextLine();
 					System.out.println("Input your Last Name:");
@@ -284,62 +313,58 @@ public class UserService implements UserServiceInterface{
 							+ "Full Name: " + firstName + " " + lastName + "\nYour Username: " + uName  );
 					String yayornay = scan.nextLine();
 					
-					if 	(yayornay==("y")) {
-						System.out.println(" It worked");
-						erun = false;
+					if 	(yayornay.equals("y")) {
+						System.out.println("User info saved ");
 						newUser.setFirstName(firstName);
 						newUser.setLastName(lastName);
 						newUser.setUsername(uName);
-					}
-					
-					else if (yayornay.equals("n")) {	
-						
+						unamerun = false;
+					} else if (yayornay.equals("n")) {	
 						System.out.println("Please re-enter info");
-								} 
-					else
-								{
-						System.out.println("The information you inputted was incorrect");
+						
+					} else {
+						System.out.println("The information you inputted was incorrect please input info again!");
 						
 									}
 					}
 				
 					
+					//place line ui print
 					
-					boolean pwrdrun = true;
 					
 					//run user password loop
-					
+					while (pwrdrun) {
 							System.out.println("Input a Password:");
 							String pword = scan.nextLine();
 							System.out.println("Confirm Password is correct\nRe-enter Password:");
 							String pword2 = scan.nextLine();
 						if (pword.equals(pword2)) {
-							ue.setPassword(pword2);
-							pwrdrun = false;
+							newUser.setPassword(pword2);
 							System.out.println("Password input Successful\n" );
+							boolean customersuccess = ua.addUser(newUser);
+							if (customersuccess) {
+								System.out.println("Information saved! Congrats " + newUser.getFirstName() + " " + newUser.getLastName() + "! You've registered as an employee!");
+							pwrdrun = false;
+							erun = false;
+							AppLogger.logger.info("Employee registered for a Profile");
+							break;
+							} else if (customersuccess == false) {
+								System.out.println("Information was not submitted properly, please try again");
+							}
 						} else {
-							pwrdrun = true;
 							System.out.println("Passwords do not Match\nPlease try again!");
-							
 							}
 					 
 					
-				} else {
-					System.out.println("You've inputed the Employee Verification code Incorrectly!\n" 
-				+ "Try to Register again!");	
-					
-						}	
-				ua.addUser(ue);
+				}
 				
-				AppLogger.logger.info("Employee registered for a Profile");
-				break;
+			}				
+break;	}
 			
-	}
-			
-		default: {System.out.println("Incorrect input please enter a Number");}
+		
 		}
 	}	
-
+		
 		
 
 	

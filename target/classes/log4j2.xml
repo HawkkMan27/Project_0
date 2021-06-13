@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
     <Properties>
-        <Property name="basePath">../JavaDay11/src/main/resources</Property>
+        <Property name="basePath">../Project_0_Bank/src/main/resources</Property>
     </Properties>
     <Appenders>
         <!-- File Appender -->
@@ -14,9 +14,9 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.jcg" level="warn" />
-        <Root level="warn">
-            <AppenderRef ref="STDOUT" />
+        <Logger name="com.jcg" level="debug" />
+        <Root level="debug">
+            
             <AppenderRef ref="FILE" />
         </Root>
     </Loggers>

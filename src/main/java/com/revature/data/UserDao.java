@@ -20,11 +20,12 @@ private Connection conn = JDBCConnection.getConnection();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, u.getType());
-			ps.setString(2, u.getFirstName());
-			ps.setString(3, u.getLastName());
-			ps.setString(4,u.getUsername());
-			ps.setString(5,u.getPassword());
+			
+			ps.setString(1, u.getFirstName());
+			ps.setString(2, u.getLastName());
+			ps.setString(3,u.getUsername());
+			ps.setString(4,u.getPassword());
+			ps.setString(5, u.getType());
 			boolean succes= ps.execute();
 		
 		if (succes) {

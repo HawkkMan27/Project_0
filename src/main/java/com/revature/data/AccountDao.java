@@ -15,23 +15,25 @@ public class AccountDao implements AccountRepoable{
 	private Connection conn = JDBCConnection.getConnection();
 	@Override
 	public boolean addAccount(Account a) {
-		String sql = "insert into accounts values (defuault, ? , ?, ?, ?)";
+
+		String sql = "insert into accounts values (default, ? , ?, ?, ?) returning *;";
 				try {
 					PreparedStatement ps = conn.prepareStatement(sql);
-					boolean success = ps.execute();
+					
 					
 					ps.setInt(1, a.getUser_id());
-					ps.setString(2, a.getType());
-					ps.setDouble(3, a.getBalance());
-					ps.setString(4, a.getApproval());
+					ps.setString(2, a.getType());	
+					ps.setString(3, a.getApproval());
+					ps.setDouble(4, a.getBalance());
+					 boolean success = ps.execute();
 					
 					if (success) {
 						return true;
 					}
-					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
 		return false;
 	}
 
@@ -46,11 +48,12 @@ public class AccountDao implements AccountRepoable{
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Account a = new Account();
-			a.setId(rs.getInt("id"));
+			a.setId(rs.getInt("account_id"));
 			a.setUser_id(rs.getInt("user_id"));
 			a.setType(rs.getString("type"));
 			a.setUser_id(rs.getInt("user_id"));
 			a.setBalance(rs.getDouble("balance"));
+			a.setApproval(rs.getString("approval"));
 			
 			userAccounts.add(a);
 			}
@@ -73,10 +76,9 @@ public class AccountDao implements AccountRepoable{
 			
 			if  (rs.next()) {
 				Account a = new Account();
-				a.setId(rs.getInt("id"));
+				a.setId(rs.getInt("account_id"));
 				a.setUser_id(rs.getInt("user_id"));
 				a.setType(rs.getString("type"));
-				a.setUser_id(rs.getInt("user_id"));
 				a.setBalance(rs.getDouble("balance"));
 				
 				return a;
@@ -90,13 +92,14 @@ public class AccountDao implements AccountRepoable{
 
 	@Override
 	public boolean accountDeposit(int id , double balance) {
-		String sql = "update accounts set balance = ?, where account_id = ?;";
+		String sql = "update accounts set balance = ? where account_id = ?  returning *;";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setDouble(1, balance);		
 			ps.setInt(2, id);
+			
 			boolean success = ps.execute();
 			
 			if (success) {
@@ -110,7 +113,7 @@ public class AccountDao implements AccountRepoable{
 
 	@Override
 	public boolean removeAccountById(int id, int user_id) {
-		String sql = "delete * from Users where account_id = ? and user_id = ?;";
+		String sql = "delete from accounts where account_id = ? and user_id = ? returning *;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -130,7 +133,7 @@ public class AccountDao implements AccountRepoable{
 
 	@Override
 	public boolean approveAccount(int id, int user_id, String approval) {
-		String sql = "update accounts set approval = ? where account_id = ? and user_id = ?;";
+		String sql = "update accounts set approval = ? where account_id = ? and user_id = ? returning * ;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, approval);
@@ -138,15 +141,18 @@ public class AccountDao implements AccountRepoable{
 			ps.setInt(3, user_id);
 			
 			boolean success = ps.execute();
+			ResultSet rs = ps.getResultSet();
 			if (success) {
-				System.out.println("Account " + id +  "for user " + user_id + " is " + approval);
+				System.out.println("Account " + id +  " for user " + user_id + " is " + approval);
 				return true;
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return false;
+		
 	}
 
 	@Override
@@ -161,7 +167,7 @@ public class AccountDao implements AccountRepoable{
 			
 			while (rs.next()) {
 				Account a = new Account();
-				a.setId(rs.getInt("id"));
+				a.setId(rs.getInt("account_id"));
 				a.setUser_id(rs.getInt("user_id"));
 				a.setType(rs.getString("type"));
 				a.setUser_id(rs.getInt("user_id"));
@@ -180,7 +186,7 @@ public class AccountDao implements AccountRepoable{
 
 	@Override
 	public boolean accountUpdate(int id, double balance) {
-		String sql = "update accounts set balance = ?, where account_id = ?;";
+		String sql = "update accounts set balance = ?, where account_id = ? returning *;";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -196,6 +202,34 @@ public class AccountDao implements AccountRepoable{
 			e.printStackTrace();
 									} 	
 		return false;
+	}
+
+	@Override
+	public List<Account> getpendingAccounts() {
+		List<Account> userAccounts = new ArrayList<>();
+		String sql = "select * from accounts where approval = ?;";
+		try {
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1,"pending");
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Account a = new Account();
+			a.setId(rs.getInt("account_id"));
+			a.setType(rs.getString("type"));
+			a.setUser_id(rs.getInt("user_id"));
+			a.setBalance(rs.getDouble("balance"));
+			a.setApproval(rs.getString("approval"));
+			
+			userAccounts.add(a);
+			}
+		return userAccounts;
+		
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
 	}
 
 }

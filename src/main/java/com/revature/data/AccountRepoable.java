@@ -13,7 +13,7 @@ public interface AccountRepoable {
 	List <Account> getAllAccounts();
 	boolean accountDeposit(int id, double balance);
 	boolean accountUpdate(int id, double balance);
-	
+	List <Account> getpendingAccounts();
 	boolean removeAccountById(int id, int user_id);
 	
 }

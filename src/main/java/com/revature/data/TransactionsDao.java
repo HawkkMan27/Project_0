@@ -67,10 +67,10 @@ public class TransactionsDao  {
 			}
 	
 	public boolean addTransaction(Transaction t) {
-		String sql = "insert into transactions values (default, ? , ?, ?, ?, ?, ?, ? );";
+		String sql = "insert into transactions values (default, ? , ?, ?, ?, ?, ?, ? ) returning *;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			boolean success = ps.execute();
+			
 			ps.setInt(1, t.getUser_id());
 			ps.setString(2, t.getFirstName());
 			ps.setString(3, t.getLastName());
@@ -78,6 +78,7 @@ public class TransactionsDao  {
 			ps.setDouble(5, t.getTransaction_amount());
 			ps.setString(6, t.getDateTime());
 			ps.setInt(7, t.getAccount_id());
+			boolean success = ps.execute();
 			if (success) { 
 				return true;
 			}

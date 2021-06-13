@@ -1,0 +1,30 @@
+INFO  | 2021-06-12 16:55:41 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:18:02 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:26:41 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:34:31 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:36:34 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:44:16 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 17:50:27 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:06:15 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:14:49 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:16:33 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:21:04 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:21:13 | [main] servicelogic.AccServicesClass (AccServicesClass.java:74) - User created a Savings account
+INFO  | 2021-06-12 18:51:48 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 18:52:00 | [main] servicelogic.AccServicesClass (AccServicesClass.java:74) - User created a Savings account
+INFO  | 2021-06-12 18:53:11 | [main] servicelogic.AccServicesClass (AccServicesClass.java:41) - User viewed their accounts
+INFO  | 2021-06-12 19:09:42 | [main] servicelogic.AccServicesClass (AccServicesClass.java:237) - User deposited into account
+INFO  | 2021-06-12 19:22:19 | [main] servicelogic.AccServicesClass (AccServicesClass.java:237) - User deposited into account
+INFO  | 2021-06-12 19:32:15 | [main] servicelogic.UserService (UserService.java:349) - Employee registered for a Profile
+INFO  | 2021-06-12 19:42:31 | [main] servicelogic.AccServicesClass (AccServicesClass.java:305) - Logged in Employee approved an account
+INFO  | 2021-06-12 22:12:57 | [main] servicelogic.UserService (UserService.java:265) - New Customer registered for a new Profile
+INFO  | 2021-06-12 22:13:36 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 22:13:58 | [main] servicelogic.AccServicesClass (AccServicesClass.java:122) - User created a checkings account
+INFO  | 2021-06-12 22:27:20 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 22:27:35 | [main] servicelogic.AccServicesClass (AccServicesClass.java:122) - User created a checkings account
+INFO  | 2021-06-12 22:31:39 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 22:31:59 | [main] servicelogic.AccServicesClass (AccServicesClass.java:122) - User created a checkings account
+INFO  | 2021-06-12 22:41:18 | [main] bankapp.AppLayer (AppLayer.java:26) - Logged in as a Customer
+INFO  | 2021-06-12 22:42:03 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-12 22:42:05 | [main] servicelogic.AccServicesClass (AccServicesClass.java:41) - User viewed their accounts
+INFO  | 2021-06-12 22:51:29 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
