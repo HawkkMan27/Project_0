@@ -103,6 +103,7 @@ private Connection conn = JDBCConnection.getConnection();
 				u.setFirstName(rs.getString("firstName"));
 				u.setLastName(rs.getString("lastName"));
 				u.setUsername(rs.getString("username"));
+				u.setPassword(rs.getString("password"));
 				u.setType(rs.getString("type"));
 				u.setUser_id(rs.getInt("user_id"));
 				

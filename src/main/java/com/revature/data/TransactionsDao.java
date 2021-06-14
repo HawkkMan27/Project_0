@@ -1,5 +1,6 @@
 package com.revature.data;
 
+import java.sql.CallableStatement;
 //public List<Transaction> getUserTransactions(int user_id ) {
 //public List<Transaction> getAllTransactions(){
 //public boolean addTransaction(Transaction t) 
@@ -56,6 +57,7 @@ public class TransactionsDao  {
 				t.setTransaction_type(rs.getString("transaction_type"));
 				t.setUser_id(rs.getInt("user_id"));
 				t.setDateTime(rs.getString("timeoftransaction"));
+				t.setAccount_id(rs.getInt("transferaccount_id"));
 				
 				allTransactions.add(t);
 			}
@@ -67,6 +69,7 @@ public class TransactionsDao  {
 			}
 	
 	public boolean addTransaction(Transaction t) {
+		conn = JDBCConnection.getConnection();
 		String sql = "insert into transactions values (default, ? , ?, ?, ?, ?, ?, ? ) returning *;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -112,6 +115,23 @@ public class TransactionsDao  {
 			e.printStackTrace();
 		}
 	return null;	
+	}
+	
+	
+	public boolean deleteTransaction(int transaction_id) {
+		try {
+			String sql = "call deletetransaction(?);";
+			CallableStatement stmt = conn.prepareCall(sql);
+			
+			stmt.setInt(1, transaction_id);
+			boolean numberofrows = stmt.execute();
+			if (numberofrows) {
+				return true;
+			}
+		} catch (SQLException e) {
+			
+		}
+		return false;
 	}
 	}
 	

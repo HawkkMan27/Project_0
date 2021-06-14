@@ -161,7 +161,7 @@ public class AccServicesClass implements AccountServicelogic {
 			System.out.println("Here are your accounts and balances");
 			for(Account ac : userAccounts) {
 				
-				System.out.println("Account Id:  " +  ac.getId() + " Account User Id: " +  ac.getUser_id() + " Account Type: " + ac.getType() + "\n");
+				System.out.println("Account Id:  " +  ac.getId() + " Account User Id: " +  ac.getUser_id() + " Account Type: " + ac.getType());
 				System.out.println(" Account Status: " + ac.getApproval() + "\n");
 			}
 			System.out.println("Choose an Option\n" + "1. Withdrawal\n2. Deposit\n3: Return to Customer Menu");
@@ -170,7 +170,6 @@ public class AccServicesClass implements AccountServicelogic {
 			case 1: {
 				System.out.println("Enter an ID number for the Account you wish to withdraw from");
 				int input = Integer.parseInt(scan.nextLine());
-				if (input < userAccounts.size()) {
 				Account withdrawAcc = aa.getAccount(input, loggedUser.getUser_id());
 				if (withdrawAcc == null) {
 					System.out.println("That account doesn't exist, Please try Again.");
@@ -199,6 +198,7 @@ public class AccServicesClass implements AccountServicelogic {
 									System.out.println("You've officially withdrawn " + amountWithdrawn + ". The new Balance is " + withdrawAcc.getBalance());
 						// display new balance
 									dWRun = false;
+									amountcorrect = false;
 									AppLogger.logger.info("User Withdrawed from account");
 								} else {System.out.println("Not properly saved withdrawal please try again");
 									dWRun = true;
@@ -209,13 +209,13 @@ public class AccServicesClass implements AccountServicelogic {
 							System.out.println("Please enter the \"y\" or \"n\"");
 							
 								}}}
-				}}
+				}
 				break;
 			}
 			case 2: {
 				System.out.println("Enter an ID number for the Account you wish to deposit from");
 				int input = Integer.parseInt(scan.nextLine());
-				if (input <= userAccounts.size()) {
+				
 				Account depositAcc = aa.getAccount(input, loggedUser.getUser_id());
 				if (depositAcc == null) {
 					System.out.println("That account doesn't exist, Please try Again.");
@@ -254,8 +254,9 @@ public class AccServicesClass implements AccountServicelogic {
 								} else {
 							System.out.println("Please enter the \"y\" or \"n\" next time");
 							
-								}}}
-				}}
+								} }else {System.out.println("Incorrect amount. Please enter an amount greater than 0.");}
+						}
+				}
 				break;
 			}
 			case 3: {
@@ -283,7 +284,7 @@ public class AccServicesClass implements AccountServicelogic {
 		}
 		boolean aoA = true;
 		if (tobeapprovedaccounts.isEmpty()) {
-			System.out.println("No accounts to be approved");
+			System.out.println("\nNo accounts to be approved!\n");
 			aoA = false;
 		}
 		while (aoA) {
@@ -304,7 +305,7 @@ public class AccServicesClass implements AccountServicelogic {
 					boolean success = aa.approveAccount(accountId, userId, "Approved");
 					if (success) {
 						String translog = "Approved Account [ " + accountId + " ]!";
-						Transaction Ta = new Transaction(userId, translog, loggedUser.getFirstName(), loggedUser.getLastName(), 0, accountId );
+						Transaction Ta = new Transaction(userId, translog, loggedUser.getFirstName(), loggedUser.getLastName(), 0, 0 );
 						 tt.addTransaction(Ta);
 						 AppLogger.logger.info("Logged in Employee approved an account");
 						System.out.println("Account " + accountId + " approved!");
@@ -318,6 +319,7 @@ public class AccServicesClass implements AccountServicelogic {
 			boolean denied = aa.removeAccountById(accountId, userId);
 			if (denied) {
 				System.out.println("Account [ " + accountId + " ] successfully Deleted");
+				aoA = false;
 				}else {
 				System.out.println("Something went wrong in deleting account. Please try again at a different time.");	
 				}

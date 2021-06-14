@@ -51,7 +51,6 @@ public class AccountDao implements AccountRepoable{
 			a.setId(rs.getInt("account_id"));
 			a.setUser_id(rs.getInt("user_id"));
 			a.setType(rs.getString("type"));
-			a.setUser_id(rs.getInt("user_id"));
 			a.setBalance(rs.getDouble("balance"));
 			a.setApproval(rs.getString("approval"));
 			
@@ -80,6 +79,7 @@ public class AccountDao implements AccountRepoable{
 				a.setUser_id(rs.getInt("user_id"));
 				a.setType(rs.getString("type"));
 				a.setBalance(rs.getDouble("balance"));
+				a.setApproval(rs.getString("approval"));
 				
 				return a;
 			}
@@ -141,7 +141,6 @@ public class AccountDao implements AccountRepoable{
 			ps.setInt(3, user_id);
 			
 			boolean success = ps.execute();
-			ResultSet rs = ps.getResultSet();
 			if (success) {
 				System.out.println("Account " + id +  " for user " + user_id + " is " + approval);
 				return true;
@@ -170,8 +169,9 @@ public class AccountDao implements AccountRepoable{
 				a.setId(rs.getInt("account_id"));
 				a.setUser_id(rs.getInt("user_id"));
 				a.setType(rs.getString("type"));
-				a.setUser_id(rs.getInt("user_id"));
+				
 				a.setBalance(rs.getDouble("balance"));
+				a.setApproval(rs.getString("approval"));
 				
 				allAccounts.add(a);
 			}
@@ -186,7 +186,7 @@ public class AccountDao implements AccountRepoable{
 
 	@Override
 	public boolean accountUpdate(int id, double balance) {
-		String sql = "update accounts set balance = ?, where account_id = ? returning *;";
+		String sql = "update accounts set balance = ? where account_id = ? returning *;";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

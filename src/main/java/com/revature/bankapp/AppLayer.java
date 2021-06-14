@@ -2,6 +2,7 @@ package com.revature.bankapp;
 
 import java.util.Scanner;
 
+import com.revature.data.TransactionsDao;
 import com.revature.items.User;
 import com.revature.logging.AppLogger;
 import com.revature.servicelogic.UserService;
@@ -11,7 +12,7 @@ public class AppLayer {
 	public static Scanner scan = new Scanner(System.in);
 	public static User LoggedinUser;
 	private static UserServiceInterface us = new UserService();
-	
+	public static TransactionsDao tp = new TransactionsDao();
 	public static void logInfo(String message) {
 		AppLogger.logger.info(message);
 	}
@@ -20,6 +21,7 @@ public class AppLayer {
 	
 	private static void login() {
 		LoggedinUser = us.login(scan);
+		if (LoggedinUser != null) {
 			System.out.println("Login complete. Welcome " + LoggedinUser.getFirstName() + " " +  LoggedinUser.getLastName());
 			if (LoggedinUser.getType().equals("Customer")) {
 				us.customerMenu(scan, LoggedinUser);
@@ -28,9 +30,10 @@ public class AppLayer {
 				us.employeeMenu(scan, LoggedinUser);
 				AppLogger.logger.info("Logged in as an Employee");
 			}
-		}
+		}else {System.out.println("Login unsuccessful. Try again please!");}}
 	
 	public static  void main(String[] args) {
+
 		Scanner scan = new Scanner(System.in);
 		boolean run = true;
 		while (run) {

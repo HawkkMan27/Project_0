@@ -28,3 +28,82 @@ INFO  | 2021-06-12 22:41:18 | [main] bankapp.AppLayer (AppLayer.java:26) - Logge
 INFO  | 2021-06-12 22:42:03 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
 INFO  | 2021-06-12 22:42:05 | [main] servicelogic.AccServicesClass (AccServicesClass.java:41) - User viewed their accounts
 INFO  | 2021-06-12 22:51:29 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 11:30:28 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 11:30:36 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-13 12:08:35 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 12:08:48 | [main] servicelogic.AccServicesClass (AccServicesClass.java:78) - User created a Savings account
+INFO  | 2021-06-13 12:09:06 | [main] bankapp.AppLayer (AppLayer.java:26) - Logged in as a Customer
+INFO  | 2021-06-13 12:10:27 | [main] servicelogic.AccServicesClass (AccServicesClass.java:309) - Logged in Employee approved an account
+INFO  | 2021-06-13 12:10:48 | [main] bankapp.AppLayer (AppLayer.java:29) - Logged in as an Employee
+INFO  | 2021-06-13 12:11:00 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 12:11:13 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-13 12:11:34 | [main] bankapp.AppLayer (AppLayer.java:26) - Logged in as a Customer
+INFO  | 2021-06-13 12:12:07 | [main] servicelogic.AccServicesClass (AccServicesClass.java:309) - Logged in Employee approved an account
+INFO  | 2021-06-13 12:12:10 | [main] bankapp.AppLayer (AppLayer.java:29) - Logged in as an Employee
+INFO  | 2021-06-13 12:12:56 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:92) - Transfer request from User: 33
+INFO  | 2021-06-13 12:13:13 | [main] bankapp.AppLayer (AppLayer.java:26) - Logged in as a Customer
+INFO  | 2021-06-13 12:13:37 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 14:01:40 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:97) - Transfer request from User: 31
+INFO  | 2021-06-13 14:11:13 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:97) - Transfer request from User: 31
+INFO  | 2021-06-13 18:50:06 | [main] servicelogic.UserService (UserService.java:88) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 18:52:34 | [main] servicelogic.UserService (UserService.java:88) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 19:02:25 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:97) - Transfer request from User: 31
+INFO  | 2021-06-13 19:02:31 | [main] bankapp.AppLayer (AppLayer.java:27) - Logged in as a Customer
+INFO  | 2021-06-13 19:02:46 | [main] servicelogic.UserService (UserService.java:88) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 19:06:51 | [main] servicelogic.UserService (UserService.java:88) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 19:06:51 | [main] servicelogic.UserService (UserService.java:97) -  The money sent was taken out of senders account
+INFO  | 2021-06-13 19:08:44 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:97) - Transfer request from User: 33
+INFO  | 2021-06-13 19:09:02 | [main] bankapp.AppLayer (AppLayer.java:27) - Logged in as a Customer
+INFO  | 2021-06-13 19:09:22 | [main] servicelogic.UserService (UserService.java:88) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 19:09:22 | [main] servicelogic.UserService (UserService.java:97) -  The money sent was taken out of senders account
+INFO  | 2021-06-13 19:29:22 | [main] servicelogic.AccServicesClass (AccServicesClass.java:201) - User Withdrawed from account
+INFO  | 2021-06-13 19:31:23 | [main] servicelogic.AccServicesClass (AccServicesClass.java:202) - User Withdrawed from account
+INFO  | 2021-06-13 19:36:53 | [main] servicelogic.AccServicesClass (AccServicesClass.java:248) - User deposited into account
+INFO  | 2021-06-13 19:38:15 | [main] bankapp.AppLayer (AppLayer.java:27) - Logged in as a Customer
+INFO  | 2021-06-13 19:38:41 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 19:38:58 | [main] servicelogic.AccServicesClass (AccServicesClass.java:78) - User created a Savings account
+INFO  | 2021-06-13 19:39:11 | [main] bankapp.AppLayer (AppLayer.java:27) - Logged in as a Customer
+INFO  | 2021-06-13 19:48:27 | [main] bankapp.AppLayer (AppLayer.java:30) - Logged in as an Employee
+INFO  | 2021-06-13 21:33:21 | [main] servicelogic.UserService (UserService.java:271) - New Customer registered for a new Profile
+INFO  | 2021-06-13 21:33:55 | [main] bankapp.AppLayer (AppLayer.java:27) - Logged in as a Customer
+INFO  | 2021-06-13 21:42:51 | [main] servicelogic.UserService (UserService.java:57) - User Logged in
+INFO  | 2021-06-13 21:44:49 | [main] servicelogic.UserService (UserService.java:58) - User Logged in
+INFO  | 2021-06-13 21:46:17 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 21:46:31 | [main] servicelogic.AccServicesClass (AccServicesClass.java:78) - User created a Savings account
+INFO  | 2021-06-13 21:46:42 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-13 21:46:51 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 21:47:20 | [main] servicelogic.UserService (UserService.java:64) - User Logged in
+INFO  | 2021-06-13 21:47:33 | [main] servicelogic.UserService (UserService.java:64) - User Logged in
+INFO  | 2021-06-13 21:48:25 | [main] servicelogic.AccServicesClass (AccServicesClass.java:309) - Logged in Employee approved an account
+INFO  | 2021-06-13 21:53:30 | [main] servicelogic.UserService (UserService.java:197) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 21:53:30 | [main] servicelogic.UserService (UserService.java:214) - Employee checked all of the Transactions and Accounts
+INFO  | 2021-06-13 22:06:49 | [main] servicelogic.UserService (UserService.java:197) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 22:06:49 | [main] servicelogic.UserService (UserService.java:214) - Employee checked all of the Transactions and Accounts
+INFO  | 2021-06-13 22:09:24 | [main] servicelogic.UserService (UserService.java:197) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 22:10:21 | [main] servicelogic.UserService (UserService.java:214) - Employee checked all of the Transactions and Accounts
+INFO  | 2021-06-13 22:12:36 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-13 22:12:56 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 22:13:00 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-13 22:16:52 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-13 22:22:15 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:98) - Transfer request from User: 31
+INFO  | 2021-06-13 22:23:21 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 22:23:41 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 22:23:41 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-13 22:23:49 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 22:23:51 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-13 22:24:24 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 23:02:58 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:98) - Transfer request from User: 33
+INFO  | 2021-06-13 23:03:05 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 23:04:13 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-13 23:04:13 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-13 23:04:21 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 23:04:27 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 23:04:47 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-13 23:04:49 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-13 23:04:58 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-13 23:05:35 | [main] servicelogic.AccServicesClass (AccServicesClass.java:310) - Logged in Employee approved an account
+INFO  | 2021-06-13 23:05:50 | [main] servicelogic.UserService (UserService.java:197) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 23:05:57 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-13 23:14:29 | [main] servicelogic.UserService (UserService.java:202) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 23:16:12 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-13 23:17:48 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts

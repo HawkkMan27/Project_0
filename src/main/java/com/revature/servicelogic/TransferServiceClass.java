@@ -10,6 +10,7 @@ import com.revature.data.TransactionsDao;
 import com.revature.items.Account;
 import com.revature.items.Transaction;
 import com.revature.items.User;
+import com.revature.logging.AppLogger;
 
 public class TransferServiceClass implements TransferServiceInterface {
 
@@ -42,10 +43,20 @@ public class TransferServiceClass implements TransferServiceInterface {
 						allAccountIds.add(tempid);
 					}
 			}
+			rt = false;	
+			}
+			
+			int Id;
+			while (true) {
+			try {
+				System.out.println("\nChoose an accountId to send Money to. ");
+				Id = Integer.parseInt(scan.nextLine());
+				break;
+			} catch( NumberFormatException e) {
+				System.out.println("Incorrect Input. Please try again");
 				
 			}
-			System.out.println("Choose an accountId to send Money to. ");
-			int Id = Integer.parseInt(scan.nextLine());
+			}
 			boolean exists = false;
 			for(int in : allAccountIds) {
 				if (Id == in) {
@@ -62,25 +73,48 @@ public class TransferServiceClass implements TransferServiceInterface {
 					System.out.println("Your " + a.getType() + " Account with a balance of " + a.getBalance() + " and the account Id is " + a.getId());
 					
 				}
-				System.out.println("Which account would you like to send money from? Enter an account Id from the list");
+				System.out.println("\nWhich account would you like to send money from? Enter an account Id from the list");
 				int accountid = Integer.parseInt(scan.nextLine());
+				
+				boolean goodtogo = false;
+				for (Account b: yourAccounts) {
+					if (b.getId() == accountid) {
+						goodtogo = true;
+						break;
+					}else {
+						System.out.println("Incorrect Input. This account number doesn't exist.");
+						break;
+					}
+					
+				}
+				while (goodtogo) {
 				Account youraccount = aa.getAccount(accountid, u.getUser_id() );
 				System.out.println("Your " + youraccount.getType() + " Account " + youraccount.getId() + " has a balance of " + youraccount.getBalance());
-				System.out.println("Please enter an amount to send to Account " + Id);
+				System.out.println("\nPlease enter an amount to send to Account " + Id);
+				
 				double sendDinero = Double.parseDouble(scan.nextLine());
+				
 				if (youraccount.getBalance() >= sendDinero) { 
+				AppLogger.logger.info("Transfer request from User: " + u.getUser_id());
+				String type = "TransfertoUserAccount"; // + accountid;
+				Transaction transfer = new Transaction(accountid, type, u.getFirstName(), u.getLastName(), sendDinero, Id);
+				boolean win = tt.addTransaction(transfer);
+				if (win) {
+					System.out.println("Transfer request successful your account will update if they approve the request");
 					
-				String type = "TransfertoUserId";
-				Transaction transfer = new Transaction(Id, type, u.getFirstName(), u.getLastName(), sendDinero, accountid);
-				tt.addTransaction(transfer);
+				}else {System.out.println("Transfer didn't upload correctly. Try again some other time"); }
 				rt = false;
+				goodtogo = false;
 				} else { System.out.println("I'm sorry you don't have enough money. Please redo Transfer request");}
 				
-				
+				}
+			} else {System.out.println("No account exists here");
+							}
 			}
-		}
+	
+}
 		
-	}
+	
 
 	
 

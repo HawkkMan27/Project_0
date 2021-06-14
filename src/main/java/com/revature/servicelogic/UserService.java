@@ -36,7 +36,14 @@ public class UserService implements UserServiceInterface{
 			String username = scan.nextLine();
 			System.out.println("Enter your Password: ");
 			String password = scan.nextLine();
-			return ua.getUser(username, password);
+			List<User> allusers = ua.getAllUsers();
+			for(User user : allusers) {
+				if(user.getPassword().equals(password) & user.getUsername().equals(username)) {
+					return ua.getUser(username, password);
+					
+				}
+			}
+			
 			
 		}
 		if(uOption == 2) {
@@ -45,7 +52,13 @@ public class UserService implements UserServiceInterface{
 		String username = scan.nextLine();
 		System.out.println("Enter your Password: ");
 		String password = scan.nextLine();
-		return ua.getUser(username, password);
+		List<User> allusers = ua.getAllUsers();
+		for(User user : allusers) {
+			if(user.getPassword().equals(password) & user.getUsername().equals(username)) {
+				return ua.getUser(username, password);
+				
+			}
+		}
 		
 											}
 		AppLogger.logger.info("User Logged in");
@@ -62,43 +75,48 @@ public class UserService implements UserServiceInterface{
 		List<Account> accountstobeapproved = aa.getAccounts(u.getUser_id());
 		int acctobeinput;
 		for (Transaction transfer : allTransactions) {
-			if (transfer.getTransaction_type().equals("TransfertoUserId")) {
+			if (transfer.getTransaction_type().equals("TransfertoUserAccount")) {
 				possibleTransfers.add(transfer);
 			}
 		}
 		
 		for (Account a : yourAccounts) {
-			int checkid = a.getId();
+			
 			for (Transaction trans : possibleTransfers) {
-				if (checkid == trans.getUser_id()) {
-					acctobeinput = trans.getUser_id();
-					
-					
+				if (a.getId() == trans.getAccount_id()) {
+					acctobeinput = trans.getAccount_id();
+					//acctobeinput is your account
+//					int senderaccount = Integer.parseInt(trans.getTransaction_type());
 					accountstobeapproved.add(aa.getAccount(acctobeinput, u.getUser_id()));
 					Account accounttobeupdated = aa.getAccount(acctobeinput, u.getUser_id());
 					System.out.println(trans.getFirstName() + " " + trans.getLastName() 
-					+ "\n sent $" + trans.getTransaction_amount() + " to your " + accounttobeupdated.getType() + "Account with id of " + trans.getUser_id());
+					+ "\n sent $" + trans.getTransaction_amount() + " to your " + accounttobeupdated.getType() + "Account with id of " + acctobeinput);
 					System.out.println(" Would you like to accept the money? (y/n)");
 					String answer = scan.nextLine();
 						
 					if (answer.equals("y")) {
 						boolean checkyou = aa.accountUpdate(acctobeinput, (accounttobeupdated.getBalance() + trans.getTransaction_amount()));
-						if (checkyou) {System.out.println("Your account is successfully updated");}else {System.out.println("Database update unsuccessful");}
+							if (checkyou) {System.out.println("Your account is successfully updated");}else {System.out.println("Database update unsuccessful");}
 						List<User> allUsers = ua.getAllUsers();
 						AppLogger.logger.info("User Approved transfer and deposited sent money");
 						for (User us: allUsers) {
 							if (us.getFirstName().equals(trans.getFirstName()) & us.getLastName().equals(trans.getLastName())){
 								User uss = us;
-								int accid = trans.getAccount_id();
+								int accid = trans.getUser_id();
 								Account blah = aa.getAccount(accid, uss.getUser_id());
 								boolean check = aa.accountUpdate(accid, (blah.getBalance() - trans.getTransaction_amount()));
-								Transaction tp = new Transaction (uss.getUser_id(), "transferapproveddecrease", uss.getFirstName(),uss.getLastName(), trans.getTransaction_amount(), accid);
+								Transaction tp = new Transaction (uss.getUser_id(), "transferapprovedbyReceiver", uss.getFirstName(),uss.getLastName(), trans.getTransaction_amount(), accid);
 								tt.addTransaction(tp);
 								AppLogger.logger.info(" The money sent was taken out of senders account");
 								if (check) {System.out.println("Senders account successfully updated");}else {System.out.println("Database update unsuccessful");}
+								tt.deleteTransaction(trans.getTransaction_id());
 							}
 						}
-					}
+					}else if (answer.equals("n")) {
+						System.out.println("Transfer deposit denied");
+						tt.deleteTransaction(trans.getTransaction_id());
+						//tt.remove method for a transaction
+					} else {System.out.println("Input incorrect. Transfer approval cancelled");}
 					
 					}}
 				}
@@ -107,7 +125,8 @@ public class UserService implements UserServiceInterface{
 		
 		boolean cmRun = true;
 		while (cmRun) {
-		System.out.println("Welcome Customer!\nHow can we help? Input a number from Options below\n" 
+		 
+		System.out.println("\nWelcome Customer!\nHow can we help? Input a number from Options below\n" 
 				+ "1. Account Options\n2. Send Money\n3. Deposit/Withdrawal\n4. Logout to Main Menu");
 		int uOption = Integer.parseInt(scan.nextLine());
 		switch (uOption) {
@@ -138,7 +157,7 @@ public class UserService implements UserServiceInterface{
 	boolean emRun = true;
 	System.out.println("Welcome Employee " + u.getFirstName() + " " + u.getLastName());
 	while (emRun) {
-		System.out.println("Choose an Option\n1. Approve or Deny pending Accounts\n2. View Customer Accounts and Transactions\n3. Logout to Main Menu ");
+		System.out.println("\nChoose an Option\n1. Approve or Deny pending Accounts\n2. View Customer Accounts and Transactions\n3. Logout to Main Menu ");
 		int input = Integer.parseInt(scan.nextLine());
 		switch (input) {
 		
@@ -149,21 +168,31 @@ public class UserService implements UserServiceInterface{
 		}
 		
 			case 2: {
-				System.out.println("Would you like to View Transactions?\n1. View a Customer's Transactions.\n2. View all Transactions.");
+				System.out.println("Would you like to View Transactions?\n1. View Customer's Accounts and Transactions.\n2. View all Transactions.");
 				int newinput = Integer.parseInt(scan.nextLine());
 				List<User> allUsers = ua.getAllUsers();
 				List<Transaction> allTransactions = tt.getAllTransactions();
+				List<Account> allAccounts = aa.getAllAccounts(); 
 				switch(newinput) {
 					case 1:{
 						//display all customers names and id's
 						System.out.println("Here are all the Customer Transactions");
 				
 						for (User us: allUsers) {
+							if (us.getType()==null) {
+								us.setType("N/A");
+								
+							}
 							if (us.getType().equals("Customer")) {
-									System.out.println("Customer Name: " + us.getFirstName() + " " + us.getLastName() 
-											+ "Customer Id: " + us.getUser_id());
+									System.out.println("\nCustomer Name: " + us.getFirstName() + " " + us.getLastName() 
+											+ " Customer Id: " + us.getUser_id() + " \n");
+									for (Account ac : allAccounts) {
+										if (ac.getUser_id() == us.getUser_id()) {
+											System.out.println(ac.toString());
+										}
+									}
 									for (Transaction at : allTransactions) {
-										if (at.getUser_id() == us.getUser_id()) {
+										if (at.getUser_id() == us.getUser_id() & at.getFirstName().equals(us.getFirstName())) {
 											System.out.println("Customer Transaction Id: " + at.getTransaction_id() + " Customer Id: " + at.getUser_id() 
 											+ "\n Type of Transaction: " + at.getTransaction_type() + " Transaction Amount: " + at.getTransaction_amount() + " at time: " + at.getDateTime());
 					}
@@ -172,7 +201,7 @@ public class UserService implements UserServiceInterface{
 				}
 				
 				AppLogger.logger.info("Employee checked all customer Transactions and Accounts");
-						}
+						break;}
 			
 					case 2:{
 							System.out.println("Here are all the accounts and transactions! Good Luck");
