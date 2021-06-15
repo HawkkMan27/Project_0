@@ -208,7 +208,9 @@ public class AccServicesClass implements AccountServicelogic {
 								} else {
 							System.out.println("Please enter the \"y\" or \"n\"");
 							
-								}}}
+								}}else {
+									System.out.println("Amount is incorrect please try again!");}
+								}
 				}
 				break;
 			}

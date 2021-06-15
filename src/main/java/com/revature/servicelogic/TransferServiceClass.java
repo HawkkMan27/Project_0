@@ -81,9 +81,6 @@ public class TransferServiceClass implements TransferServiceInterface {
 					if (b.getId() == accountid) {
 						goodtogo = true;
 						break;
-					}else {
-						System.out.println("Incorrect Input. This account number doesn't exist.");
-						break;
 					}
 					
 				}

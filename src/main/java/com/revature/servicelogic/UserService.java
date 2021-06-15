@@ -114,7 +114,7 @@ public class UserService implements UserServiceInterface{
 						}
 					}else if (answer.equals("n")) {
 						System.out.println("Transfer deposit denied");
-						tt.deleteTransaction(trans.getTransaction_id());
+						tt.deleteTransaction(trans.getTransaction_id()); // delete transaction to approve transfer
 						//tt.remove method for a transaction
 					} else {System.out.println("Input incorrect. Transfer approval cancelled");}
 					

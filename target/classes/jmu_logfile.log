@@ -107,3 +107,68 @@ INFO  | 2021-06-13 23:05:57 | [main] bankapp.AppLayer (AppLayer.java:31) - Logge
 INFO  | 2021-06-13 23:14:29 | [main] servicelogic.UserService (UserService.java:202) - Employee checked all customer Transactions and Accounts
 INFO  | 2021-06-13 23:16:12 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
 INFO  | 2021-06-13 23:17:48 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-14 09:08:10 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 09:08:14 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 09:09:08 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 09:09:48 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-14 09:13:53 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:95) - Transfer request from User: 31
+INFO  | 2021-06-14 09:13:57 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 09:14:05 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-14 09:14:05 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-14 09:14:08 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 09:14:11 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 09:15:17 | [main] servicelogic.AccServicesClass (AccServicesClass.java:248) - User deposited into account
+INFO  | 2021-06-14 09:16:09 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:95) - Transfer request from User: 33
+INFO  | 2021-06-14 09:16:16 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 09:16:18 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 09:16:25 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 09:17:00 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-14 09:17:01 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-14 09:17:07 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 09:17:09 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 09:17:32 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-14 09:17:40 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 09:18:25 | [main] servicelogic.UserService (UserService.java:220) - Employee checked all of the Transactions and Accounts
+INFO  | 2021-06-14 09:18:44 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-14 12:48:56 | [main] servicelogic.UserService (UserService.java:294) - New Customer registered for a new Profile
+INFO  | 2021-06-14 12:50:26 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 12:50:38 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-14 12:50:56 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 12:52:09 | [main] servicelogic.UserService (UserService.java:64) - User Logged in
+INFO  | 2021-06-14 12:52:46 | [main] servicelogic.AccServicesClass (AccServicesClass.java:310) - Logged in Employee approved an account
+INFO  | 2021-06-14 12:52:59 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-14 12:53:09 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-14 12:54:58 | [main] servicelogic.AccServicesClass (AccServicesClass.java:202) - User Withdrawed from account
+INFO  | 2021-06-14 12:55:44 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:95) - Transfer request from User: 31
+INFO  | 2021-06-14 12:55:49 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 12:56:28 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 12:56:46 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-14 12:56:47 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-14 12:56:58 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 12:57:01 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 12:57:14 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 17:27:52 | [main] servicelogic.UserService (UserService.java:294) - New Customer registered for a new Profile
+INFO  | 2021-06-14 17:28:11 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 17:28:28 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-14 17:28:37 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 17:29:26 | [main] servicelogic.AccServicesClass (AccServicesClass.java:310) - Logged in Employee approved an account
+INFO  | 2021-06-14 17:29:40 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
+INFO  | 2021-06-14 17:30:16 | [main] servicelogic.UserService (UserService.java:220) - Employee checked all of the Transactions and Accounts
+INFO  | 2021-06-14 17:30:23 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-14 17:31:22 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:95) - Transfer request from User: 37
+INFO  | 2021-06-14 17:31:41 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 17:32:48 | [main] servicelogic.UserService (UserService.java:101) - User Approved transfer and deposited sent money
+INFO  | 2021-06-14 17:32:48 | [main] servicelogic.UserService (UserService.java:110) -  The money sent was taken out of senders account
+INFO  | 2021-06-14 17:33:20 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 17:33:22 | [main] servicelogic.AccServicesClass (AccServicesClass.java:44) - User viewed their accounts
+INFO  | 2021-06-14 17:34:08 | [main] servicelogic.AccServicesClass (AccServicesClass.java:248) - User deposited into account
+INFO  | 2021-06-14 17:35:08 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 18:16:48 | [main] servicelogic.UserService (UserService.java:294) - New Customer registered for a new Profile
+INFO  | 2021-06-14 18:17:08 | [main] servicelogic.AccServicesClass (AccServicesClass.java:30) - User choosing account options
+INFO  | 2021-06-14 18:17:32 | [main] servicelogic.AccServicesClass (AccServicesClass.java:125) - User created a checkings account
+INFO  | 2021-06-14 18:17:39 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 18:18:28 | [main] servicelogic.AccServicesClass (AccServicesClass.java:310) - Logged in Employee approved an account
+INFO  | 2021-06-14 18:18:38 | [main] bankapp.AppLayer (AppLayer.java:31) - Logged in as an Employee
+INFO  | 2021-06-14 18:19:22 | [main] servicelogic.TransferServiceClass (TransferServiceClass.java:95) - Transfer request from User: 33
+INFO  | 2021-06-14 18:19:34 | [main] bankapp.AppLayer (AppLayer.java:28) - Logged in as a Customer
+INFO  | 2021-06-14 18:20:35 | [main] servicelogic.UserService (UserService.java:203) - Employee checked all customer Transactions and Accounts
